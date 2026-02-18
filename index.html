@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="TEDxMITADT — Ideas Worth Spreading. Follow us on all platforms." />
+  <meta name="theme-color" content="#0a0a0a" />
+  <meta property="og:title" content="TEDxMITADT" />
+  <meta property="og:description" content="Ideas Worth Spreading — MIT Academy of Design and Technology" />
+  <meta property="og:type" content="website" />
+  <title>TEDxMITADT — Links</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎤</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & Variables ─── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red:    #eb0028;
+      --red-d:  #b5001f;
+      --black:  #0a0a0a;
+      --white:  #f5f5f5;
+      --grey:   #1a1a1a;
+      --glass:  rgba(255,255,255,.04);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.25rem 3rem;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ─── Generated SVG Background ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(235,0,40,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 100% 80%, rgba(235,0,40,.10) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 0% 100%, rgba(235,0,40,.07) 0%, transparent 55%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='50%25' r='50%25'%3E%3Cstop offset='0%25' stop-color='%23eb0028' stop-opacity='.07'/%3E%3Cstop offset='100%25' stop-color='%230a0a0a' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect fill='%230a0a0a' width='800' height='800'/%3E%3Ccircle cx='400' cy='400' r='400' fill='url(%23g)'/%3E%3Cline x1='0' y1='200' x2='800' y2='200' stroke='%23eb0028' stroke-opacity='.03' stroke-width='1'/%3E%3Cline x1='0' y1='400' x2='800' y2='400' stroke='%23eb0028' stroke-opacity='.03' stroke-width='1'/%3E%3Cline x1='0' y1='600' x2='800' y2='600' stroke='%23eb0028' stroke-opacity='.03' stroke-width='1'/%3E%3Cline x1='200' y1='0' x2='200' y2='800' stroke='%23eb0028' stroke-opacity='.03' stroke-width='1'/%3E%3Cline x1='400' y1='0' x2='400' y2='800' stroke='%23eb0028' stroke-opacity='.03' stroke-width='1'/%3E%3Cline x1='600' y1='0' x2='600' y2='800' stroke='%23eb0028' stroke-opacity='.03' stroke-width='1'/%3E%3C/svg%3E");
+      background-size: cover, cover, cover, 800px 800px;
+    }
+
+    /* ─── Animated noise grain overlay ─── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: .025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px;
+      animation: grain 0.8s steps(1) infinite;
+    }
+
+    @keyframes grain {
+      0%,100% { transform: translate(0,0); }
+      10%      { transform: translate(-2%,-3%); }
+      20%      { transform: translate(4%,2%); }
+      30%      { transform: translate(-1%,4%); }
+      40%      { transform: translate(3%,-1%); }
+      50%      { transform: translate(-4%,3%); }
+      60%      { transform: translate(2%,-4%); }
+      70%      { transform: translate(-3%,1%); }
+      80%      { transform: translate(1%,3%); }
+      90%      { transform: translate(-2%,-2%); }
+    }
+
+    /* ─── Floating particles ─── */
+    .particles {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--red);
+      opacity: 0;
+      animation: float linear infinite;
+    }
+
+    @keyframes float {
+      0%   { opacity: 0; transform: translateY(0) scale(0); }
+      10%  { opacity: .4; }
+      90%  { opacity: .15; }
+      100% { opacity: 0; transform: translateY(-100vh) scale(1); }
+    }
+
+    /* ─── Main wrapper ─── */
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* ─── Logo ─── */
+    .logo-wrap {
+      animation: fadeDown .8s cubic-bezier(.16,1,.3,1) both;
+      margin-bottom: 1.5rem;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo-wrap img {
+      width: clamp(220px, 60vw, 320px);
+      display: block;
+    }
+
+    /* ─── Tag line ─── */
+    .tagline {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: clamp(.75rem, 2.5vw, .9rem);
+      letter-spacing: .35em;
+      text-transform: uppercase;
+      color: rgba(245,245,245,.45);
+      margin-bottom: 2.5rem;
+      animation: fadeDown .8s .12s cubic-bezier(.16,1,.3,1) both;
+    }
+
+    /* ─── Divider ─── */
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: var(--red);
+      margin-bottom: 2.5rem;
+      border-radius: 2px;
+      animation: fadeDown .8s .18s cubic-bezier(.16,1,.3,1) both;
+    }
+
+    /* ─── Link buttons ─── */
+    .links {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: .85rem;
+    }
+
+    .link-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      padding: 1.05rem 1.4rem;
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: clamp(.92rem, 3vw, 1rem);
+      letter-spacing: .02em;
+      cursor: pointer;
+      overflow: hidden;
+      transition: border-color .3s, transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .3s, background .3s;
+      -webkit-tap-highlight-color: transparent;
+      animation: fadeUp .7s cubic-bezier(.16,1,.3,1) both;
+    }
+
+    .link-btn:nth-child(1) { animation-delay: .22s; }
+    .link-btn:nth-child(2) { animation-delay: .30s; }
+    .link-btn:nth-child(3) { animation-delay: .38s; }
+    .link-btn:nth-child(4) { animation-delay: .46s; }
+    .link-btn:nth-child(5) { animation-delay: .54s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Shimmer sweep on hover */
+    .link-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.06) 50%, transparent 70%);
+      transform: translateX(-100%);
+      transition: transform .55s ease;
+    }
+
+    .link-btn:hover::before { transform: translateX(100%); }
+
+    /* Red left accent bar */
+    .link-btn::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 20%; bottom: 20%;
+      width: 3px;
+      border-radius: 0 3px 3px 0;
+      background: var(--red);
+      transform: scaleY(0);
+      transition: transform .3s cubic-bezier(.34,1.56,.64,1);
+    }
+
+    .link-btn:hover::after,
+    .link-btn:focus-visible::after { transform: scaleY(1); }
+
+    .link-btn:hover,
+    .link-btn:focus-visible {
+      border-color: rgba(235,0,40,.5);
+      background: rgba(235,0,40,.08);
+      box-shadow: 0 0 32px rgba(235,0,40,.18), 0 4px 24px rgba(0,0,0,.4);
+      transform: translateY(-3px) scale(1.012);
+      outline: none;
+    }
+
+    .link-btn:active {
+      transform: translateY(0) scale(.98);
+      box-shadow: 0 0 16px rgba(235,0,40,.12);
+    }
+
+    /* Icon container */
+    .btn-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 10px;
+      background: rgba(235,0,40,.12);
+      border: 1px solid rgba(235,0,40,.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background .3s, border-color .3s;
+    }
+
+    .link-btn:hover .btn-icon {
+      background: rgba(235,0,40,.22);
+      border-color: rgba(235,0,40,.5);
+    }
+
+    .btn-icon svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--white);
+      flex-shrink: 0;
+    }
+
+    /* Label area */
+    .btn-text {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: .1rem;
+    }
+
+    .btn-label {
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .btn-sub {
+      font-size: .72rem;
+      font-weight: 300;
+      color: rgba(245,245,245,.4);
+      letter-spacing: .03em;
+    }
+
+    /* Arrow */
+    .btn-arrow {
+      color: rgba(255,255,255,.25);
+      font-size: 1.1rem;
+      transition: transform .3s, color .3s;
+      flex-shrink: 0;
+    }
+
+    .link-btn:hover .btn-arrow {
+      transform: translateX(4px);
+      color: var(--red);
+    }
+
+    /* ─── Special: primary TED talks button ─── */
+    .link-btn.primary {
+      background: linear-gradient(135deg, rgba(235,0,40,.18) 0%, rgba(181,0,31,.08) 100%);
+      border-color: rgba(235,0,40,.35);
+    }
+
+    .link-btn.primary .btn-icon {
+      background: var(--red);
+      border-color: var(--red);
+    }
+
+    .link-btn.primary:hover {
+      background: linear-gradient(135deg, rgba(235,0,40,.30) 0%, rgba(181,0,31,.18) 100%);
+      box-shadow: 0 0 48px rgba(235,0,40,.28), 0 4px 32px rgba(0,0,0,.5);
+    }
+
+    /* ─── Footer ─── */
+    .footer {
+      margin-top: 2.8rem;
+      text-align: center;
+      font-size: .72rem;
+      color: rgba(245,245,245,.2);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      animation: fadeUp .7s .62s cubic-bezier(.16,1,.3,1) both;
+    }
+
+    .footer span { color: var(--red); }
+
+    /* ─── Pulse ring decoration ─── */
+    .pulse-ring {
+      position: fixed;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      border: 1px solid rgba(235,0,40,.06);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      animation: pulseRing 4s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .pulse-ring:nth-child(2) {
+      width: 900px;
+      height: 900px;
+      animation-delay: 1.3s;
+      border-color: rgba(235,0,40,.04);
+    }
+    .pulse-ring:nth-child(3) {
+      width: 1200px;
+      height: 1200px;
+      animation-delay: 2.6s;
+      border-color: rgba(235,0,40,.025);
+    }
+
+    @keyframes pulseRing {
+      0%, 100% { opacity: 1; transform: translate(-50%,-50%) scale(1); }
+      50%       { opacity: .5; transform: translate(-50%,-50%) scale(1.04); }
+    }
+
+    /* ─── Responsive tweaks ─── */
+    @media (min-width: 600px) {
+      .link-btn { padding: 1.15rem 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Pulse rings -->
+  <div class="pulse-ring"></div>
+  <div class="pulse-ring"></div>
+  <div class="pulse-ring"></div>
+
+  <!-- Particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Main content -->
+  <main class="wrapper">
+
+    <!-- Logo -->
+    <div class="logo-wrap">
+      <!-- Replace src with /assets/logo.png once uploaded to GitHub -->
+      <img src="/assets/logo.png" alt="TEDxMITADT Logo"
+           onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='block'" />
+      <div id="logo-fallback" style="display:none; font-family:'Bebas Neue',sans-serif; font-size:clamp(2.2rem,8vw,3.2rem); letter-spacing:.04em; color:#fff;">
+        TED<span style="color:#eb0028">x</span> MITADT
+      </div>
+    </div>
+
+    <p class="tagline">Ideas Worth Spreading</p>
+    <div class="divider"></div>
+
+    <!-- Links -->
+    <nav class="links" aria-label="TEDxMITADT social links">
+
+      <!-- 1. Talks -->
+      <a href="#" class="link-btn primary" target="_blank" rel="noopener" aria-label="Watch Talks by TEDxMITADT">
+        <div class="btn-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+          </svg>
+        </div>
+        <div class="btn-text">
+          <span class="btn-label">Talks by TEDxMITADT</span>
+          <span class="btn-sub">Watch all our curated talks</span>
+        </div>
+        <span class="btn-arrow">›</span>
+      </a>
+
+      <!-- 2. Instagram -->
+      <a href="#" class="link-btn" target="_blank" rel="noopener" aria-label="TEDxMITADT on Instagram">
+        <div class="btn-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+          </svg>
+        </div>
+        <div class="btn-text">
+          <span class="btn-label">Instagram</span>
+          <span class="btn-sub">Follow us for updates & reels</span>
+        </div>
+        <span class="btn-arrow">›</span>
+      </a>
+
+      <!-- 3. WhatsApp -->
+      <a href="#" class="link-btn" target="_blank" rel="noopener" aria-label="Join TEDxMITADT WhatsApp Community">
+        <div class="btn-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+        </div>
+        <div class="btn-text">
+          <span class="btn-label">WhatsApp Community</span>
+          <span class="btn-sub">Join our exclusive community</span>
+        </div>
+        <span class="btn-arrow">›</span>
+      </a>
+
+      <!-- 4. YouTube -->
+      <a href="#" class="link-btn" target="_blank" rel="noopener" aria-label="TEDxMITADT on YouTube">
+        <div class="btn-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M23.495 6.205a3.007 3.007 0 00-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 00.527 6.205a31.247 31.247 0 00-.522 5.805 31.247 31.247 0 00.522 5.783 3.007 3.007 0 002.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 002.088-2.088 31.247 31.247 0 00.5-5.783 31.247 31.247 0 00-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+          </svg>
+        </div>
+        <div class="btn-text">
+          <span class="btn-label">YouTube</span>
+          <span class="btn-sub">Subscribe to our channel</span>
+        </div>
+        <span class="btn-arrow">›</span>
+      </a>
+
+      <!-- 5. Facebook -->
+      <a href="#" class="link-btn" target="_blank" rel="noopener" aria-label="TEDxMITADT on Facebook">
+        <div class="btn-icon">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </div>
+        <div class="btn-text">
+          <span class="btn-label">Facebook</span>
+          <span class="btn-sub">Like & follow our page</span>
+        </div>
+        <span class="btn-arrow">›</span>
+      </a>
+
+    </nav>
+
+    <footer class="footer">
+      <span>TEDx</span>MITADT · Independently organized TED event<br>
+      MIT Academy of Design and Technology, Pune
+    </footer>
+  </main>
+
+  <script>
+    /* ─── Particle generator ─── */
+    const container = document.getElementById('particles');
+    const count = 22;
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = Math.random() * 3 + 1;
+      p.style.cssText = `
+        width:${size}px; height:${size}px;
+        left:${Math.random()*100}%;
+        bottom:-${size}px;
+        animation-duration:${8 + Math.random()*14}s;
+        animation-delay:${Math.random()*12}s;
+      `;
+      container.appendChild(p);
+    }
+
+    /* ─── Tap ripple feedback ─── */
+    document.querySelectorAll('.link-btn').forEach(btn => {
+      btn.addEventListener('pointerdown', e => {
+        const r = document.createElement('span');
+        const rect = btn.getBoundingClientRect();
+        r.style.cssText = `
+          position:absolute;
+          border-radius:50%;
+          background:rgba(235,0,40,.25);
+          transform:scale(0);
+          animation:ripple .5s linear;
+          pointer-events:none;
+          width:100px; height:100px;
+          left:${e.clientX - rect.left - 50}px;
+          top:${e.clientY - rect.top - 50}px;
+        `;
+        btn.appendChild(r);
+        setTimeout(() => r.remove(), 600);
+      });
+    });
+
+    /* inject ripple keyframes */
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes ripple {
+        to { transform: scale(4); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
